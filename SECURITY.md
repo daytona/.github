@@ -94,4 +94,4 @@ We follow a coordinated disclosure process:
 
 ## Rewards
 
-Daytona may, at its sole discretion, offer rewards for reports demonstrating meaningful security impact to the Daytona platform (Tier 1). Rewards are not offered for Tier 2 or Tier 3 reports. Duplicate reports are credited to the first submission.
+We offer rewards from $100 to $1,000 for valid, original findings that demonstrate real security impact to the Daytona platform (Tier 1). Severity, exploitability, and report quality are all considered. Rewards are not offered for Tier 2 or Tier 3 reports. Duplicate reports are credited to the first submission.
