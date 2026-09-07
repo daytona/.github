@@ -95,3 +95,31 @@ We follow a coordinated disclosure process:
 ## Rewards
 
 We offer rewards from $100 to $1,000 for valid, original findings that demonstrate real security impact to the Daytona platform (Tier 1). Severity, exploitability, and report quality are all considered. Rewards are not offered for Tier 2 or Tier 3 reports. Duplicate reports are credited to the first submission.
+
+## SSH Host Key Verification
+
+Sandbox SSH connections terminate at `ssh.app.daytona.io`. The gateway presents a single Ed25519 host key, published here so that clients can verify it out of band rather than accepting it on first connection.
+
+```
+SHA256:A1Q6sAQohGVYSNJt8rInS/gjF3Hd0Yp33d0HymhdEV8
+```
+
+As a `known_hosts` entry:
+
+```
+ssh.app.daytona.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM9Fx4ppJ0ehZyJkC8dYxsgN7aXgF+74ry9M5h2rHVJg
+```
+
+To check what the gateway is presenting against the fingerprint above:
+
+```
+ssh-keyscan ssh.app.daytona.io 2>/dev/null | ssh-keygen -lf -
+```
+
+A mismatch means the connection is not terminating at our gateway. Do not accept the key, and report it to [security@daytona.io](mailto:security@daytona.io).
+
+Clients that support strict, non-interactive verification should seed the entry above rather than relying on trust on first use. The Daytona CLI and SDKs read it from `DAYTONA_SSH_KNOWN_HOSTS`; see the SSH access documentation for per-client configuration.
+
+**Rotation.** When this key is rotated, the replacement is published here before it is served, and both keys remain published for at least 30 days afterward, so a pinned client is never left with only a retired key. `known_hosts` accepts multiple entries for the same host, so both can be seeded at once.
+
+**Scope.** This key covers `ssh.app.daytona.io`, the gateway used by Daytona's shared regions. Organizations on a dedicated or self-hosted region connect to a gateway with its own host key, published to those organizations directly.
