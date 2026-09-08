@@ -118,7 +118,7 @@ ssh-keyscan ssh.app.daytona.io 2>/dev/null | ssh-keygen -lf -
 
 A mismatch means the connection is not terminating at our gateway. Do not accept the key, and report it to [security@daytona.io](mailto:security@daytona.io).
 
-Clients that support strict, non-interactive verification should seed the entry above rather than relying on trust on first use. The Daytona CLI and SDKs read it from `DAYTONA_SSH_KNOWN_HOSTS`; see the SSH access documentation for per-client configuration.
+Clients that support strict, non-interactive verification should seed the entry above rather than relying on trust on first use. Tooling that invokes OpenSSH inherits your system trust, so an entry in `~/.ssh/known_hosts` applies; tooling that keeps its own `known_hosts` file should be pointed at one containing the entry above.
 
 **Rotation.** When this key is rotated, the replacement is published here before it is served, and both keys remain published for at least 30 days afterward, so a pinned client is never left with only a retired key. `known_hosts` accepts multiple entries for the same host, so both can be seeded at once.
 
