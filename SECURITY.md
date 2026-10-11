@@ -31,7 +31,7 @@ We will acknowledge receipt within 5 business days and provide an initial assess
 - Secrets management: scoped secret injection, unauthorized access to secrets, leakage across sandbox boundaries
 - Official SDKs and CLI: the [daytona/clients](https://github.com/daytona/clients) repository
 
-**Tier 2: maintained open-source repositories.** Actively maintained repositories under the daytona and daytonaio GitHub organizations, such as integrations. Valid reports are remediated and credited via a GitHub security advisory. Monetary rewards are not offered for this tier unless the finding also demonstrates impact to the hosted platform.
+**Tier 2: maintained open-source repositories.** Actively maintained repositories under the daytona and daytonaio GitHub organizations, such as integrations. Valid reports are remediated and acknowledged directly to the reporter. Monetary rewards are not offered for this tier unless the finding also demonstrates impact to the hosted platform.
 
 **Tier 3: out of scope.**
 
