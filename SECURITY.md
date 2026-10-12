@@ -61,6 +61,7 @@ The following categories are excluded from this program. Reports in these catego
 14. **Automated scan output** — reports generated solely by automated tools without validated proof of impact.
 15. **Best practice recommendations** without demonstrable security impact.
 16. **Spam or service degradation** — testing that results in sending unsolicited messages or degradation of service to other users.
+17. **Downstream kernel and OS-package CVEs** — vulnerabilities inherited from the upstream Linux kernel or distribution packages running on sandbox runtimes, reported by CVE identifier or version comparison. Daytona tracks the distribution security stream and updates runner kernels to the latest available release. Such reports are in scope only where the researcher demonstrates the CVE defeats sandbox isolation in Daytona's runtime — host escape or cross-tenant access, per the Scope section. Triggering or crashing a kernel to prove a version is affected falls under exclusion 3 (Denial of service).
 
 ## Supported Versions
 
