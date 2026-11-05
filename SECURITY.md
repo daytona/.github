@@ -24,8 +24,8 @@ We will acknowledge receipt within 5 business days and provide an initial assess
 
 **Tier 1: Daytona platform and official client software.** Assessed with priority and eligible for discretionary reward:
 
-- app.daytona.io, including the web application and management interfaces
-- All documented and undocumented API endpoints of the hosted service
+- app.daytona.io and app.daytona.com (Daytona v2), including the web applications and management interfaces
+- All documented and undocumented API endpoints of the hosted service, including api.daytona.com (Daytona v2)
 - Sandbox runtime isolation: escape from sandbox to host, cross-tenant access, isolation boundary bypasses
 - Authentication and authorization: SSO, API key management, session handling, privilege escalation across accounts or organizations
 - Secrets management: scoped secret injection, unauthorized access to secrets, leakage across sandbox boundaries
@@ -45,7 +45,7 @@ The presence of this security policy on a repository does not, by itself, place 
 
 The following categories are excluded from this program. Reports in these categories will be closed without further assessment unless they demonstrate impact beyond what is described.
 
-1. **In-sandbox privilege escalation, root access, or capability use** — Daytona sandboxes provide full root access within user-namespace isolation by design. Findings that chain to host escape or cross-sandbox access remain in scope.
+1. **In-sandbox privilege escalation, root access, or capability use** — Daytona sandboxes provide full root access inside the sandbox by design. Findings that chain to host escape or cross-sandbox access remain in scope.
 2. **Findings within the reporter's own sandbox** that do not demonstrate impact beyond that sandbox's isolation boundary.
 3. **Denial of service** — DoS, DDoS, resource exhaustion, volumetric testing, or network flooding.
 4. **Rate limiting observations** that do not demonstrate resource exhaustion, financial impact, or abuse potential.
