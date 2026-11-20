@@ -99,7 +99,7 @@ We offer rewards from $100 to $1,000 for valid, original findings that demonstra
 
 ## SSH Host Key Verification
 
-Sandbox SSH connections terminate at `ssh.app.daytona.io`. The gateway presents a single Ed25519 host key, published here so that clients can verify it out of band rather than accepting it on first connection.
+SSH connections to sandboxes on `app.daytona.io` terminate at `ssh.app.daytona.io`. The gateway presents a single Ed25519 host key, published here so that clients can verify it out of band rather than accepting it on first connection.
 
 ```
 SHA256:A1Q6sAQohGVYSNJt8rInS/gjF3Hd0Yp33d0HymhdEV8
@@ -119,8 +119,8 @@ ssh-keyscan ssh.app.daytona.io 2>/dev/null | ssh-keygen -lf -
 
 A mismatch means the connection is not terminating at our gateway. Do not accept the key, and report it to [security@daytona.io](mailto:security@daytona.io).
 
-Clients that support strict, non-interactive verification should seed the entry above rather than relying on trust on first use. Tooling that invokes OpenSSH inherits your system trust, so an entry in `~/.ssh/known_hosts` applies; tooling that keeps its own `known_hosts` file should be pointed at one containing the entry above.
+Clients that support strict, non-interactive verification should seed the entry above rather than relying on trust on first use. An entry in `~/.ssh/known_hosts` applies wherever OpenSSH reads that file; tooling that keeps its own `known_hosts` file should be pointed at one containing the entry above.
 
 **Rotation.** When this key is rotated, the replacement is published here before it is served, and both keys remain published for at least 30 days afterward, so a pinned client is never left with only a retired key. `known_hosts` accepts multiple entries for the same host, so both can be seeded at once.
 
-**Scope.** This key covers `ssh.app.daytona.io`, the gateway used by Daytona's shared regions. Organizations on a dedicated or self-hosted region connect to a gateway with its own host key, published to those organizations directly.
+**Scope.** This key covers `ssh.app.daytona.io`, the gateway used by Daytona's shared regions. Organizations on a dedicated or self-hosted region connect to a gateway with its own host key, published to those organizations directly. Daytona v2 sandboxes connect to the regional gateway that the API returns for each sandbox; those gateways present their own host keys, which this key does not cover.
